@@ -1,8 +1,8 @@
+import type { Accessor, Setter } from 'solid-js'
 import { Show, createEffect, createSignal } from 'solid-js'
+import SettingsSlider from './SettingsSlider'
 import IconEnv from './icons/Env'
 import IconX from './icons/X'
-import SettingsSlider from './SettingsSlider'
-import type { Accessor, Setter } from 'solid-js'
 
 interface Props {
   canEdit: Accessor<boolean>
@@ -17,8 +17,11 @@ export default (props: Props) => {
   let systemInputRef: HTMLTextAreaElement
   const [temperature, setTemperature] = createSignal(0.6)
 
-  const handleButtonClick = () => {
-    props.setCurrentSystemRoleSettings(systemInputRef.value)
+  const handleButtonClick = async() => {
+    const response = await fetch('/system_prompt.txt') // Adjust the path if you place the file in a different directory
+    const prePrompt = await response.text()
+    const finalSystemRole = prePrompt + systemInputRef.value // Prepend the pre-prompt to the user's input
+    props.setCurrentSystemRoleSettings(finalSystemRole)
     props.setSystemRoleEditing(false)
   }
 
@@ -37,9 +40,9 @@ export default (props: Props) => {
               </Show>
               <span>System Role ( Temp = {temperature()} ) : </span>
             </div>
-            <div class="mt-1">
+            {/* <div class="mt-1">
               {props.currentSystemRoleSettings()}
-            </div>
+            </div> */}
           </div>
         </Show>
         <Show when={!props.currentSystemRoleSettings() && props.canEdit()}>

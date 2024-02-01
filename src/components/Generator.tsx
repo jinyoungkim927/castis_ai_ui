@@ -1,11 +1,11 @@
+import type { ChatMessage, ErrorMessage } from '@/types'
+import { generateSignature } from '@/utils/auth'
 import { Index, Show, createEffect, createSignal, onCleanup, onMount } from 'solid-js'
 import { useThrottleFn } from 'solidjs-use'
-import { generateSignature } from '@/utils/auth'
-import IconClear from './icons/Clear'
+import ErrorMessageItem from './ErrorMessageItem'
 import MessageItem from './MessageItem'
 import SystemRoleSettings from './SystemRoleSettings'
-import ErrorMessageItem from './ErrorMessageItem'
-import type { ChatMessage, ErrorMessage } from '@/types'
+import IconClear from './icons/Clear'
 
 export default () => {
   let inputRef: HTMLTextAreaElement
