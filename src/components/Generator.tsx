@@ -243,7 +243,7 @@ export default () => {
             ref={inputRef!}
             disabled={systemRoleEditing()}
             onKeyDown={handleKeydown}
-            placeholder="Enter something..."
+            placeholder="무언가를 입력하세요..."
             autocomplete="off"
             autofocus
             onInput={() => {
@@ -253,10 +253,10 @@ export default () => {
             rows="1"
             class="gen-textarea"
           />
-          <button onClick={handleButtonClick} disabled={systemRoleEditing()} gen-slate-btn>
-            Send
+          <button onClick={handleButtonClick} disabled={systemRoleEditing()} gen-slate-btn class="ext-xs">
+            👆
           </button>
-          <button title="Clear" onClick={clear} disabled={systemRoleEditing()} gen-slate-btn>
+          <button title="Clear" onClick={clear} disabled={systemRoleEditing()} gen-slate-btn class="ext-xs">
             <IconClear />
           </button>
         </div>
