@@ -1,6 +1,4 @@
-# ChatGPT-API Demo
-
-English |
+# 캐스티스 AI
 
 ## Running Locally
 
